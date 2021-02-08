@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import classNames                      from 'classnames'
 import d3                              from 'd3/d3'
 import moment                          from 'moment'
