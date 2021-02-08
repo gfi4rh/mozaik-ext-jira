@@ -1,5 +1,4 @@
-import React from 'react'
-import ReatctDOM from 'react-dom'
+import React, { Component } from 'react'
 import classNames                      from 'classnames'
 import d3                              from 'd3/d3'
 import moment                          from 'moment'
