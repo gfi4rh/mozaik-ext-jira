@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import classNames                      from 'classnames';
-import d3                              from 'd3/d3';
-import moment                          from 'moment';
-import timezone                        from 'moment-timezone';
+import React from 'react'
+import ReatctDOM from 'react-dom'
+import classNames                      from 'classnames'
+import d3                              from 'd3/d3'
+import moment                          from 'moment'
+import timezone                        from 'moment-timezone'
 
 
 const getCurrentTimeParts = timezoneName => {
