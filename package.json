@@ -83,7 +83,7 @@
   "description": "Mozaik time widgets",
   "devDependencies": {
     "ava": "0.13.0",
-    "babel-eslint": "5.0.0",
+    "babel-eslint": "^5.0.0",
     "babel-register": "6.7.2",
     "coveralls": "2.11.8",
     "enzyme": "2.1.0",
