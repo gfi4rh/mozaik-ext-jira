@@ -1,50 +1,6 @@
 {
-  "_args": [
-    [
-      "mozaik-ext-time@1.1.0",
-      "C:\\Users\\colin.regourd\\Documents\\learn\\React\\Mozaïk\\mozaik-demo"
-    ]
-  ],
-  "_from": "git+https://github.com/colin27091/mozaik-ext-time.git",
-  "_id": "mozaik-ext-time@1.1.0",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/mozaik-ext-time",
-  "_phantomChildren": {
-    "babel-code-frame": "6.26.0",
-    "babel-generator": "6.26.1",
-    "babel-helpers": "6.24.1",
-    "babel-messages": "6.23.0",
-    "babel-register": "6.26.0",
-    "babel-template": "6.26.0",
-    "babel-traverse": "6.26.0",
-    "babel-types": "6.26.0",
-    "babylon": "6.18.0",
-    "brace-expansion": "1.1.11",
-    "convert-source-map": "1.7.0",
-    "debug": "2.6.9",
-    "path-is-absolute": "1.0.1",
-    "private": "0.1.8",
-    "slash": "1.0.0",
-    "source-map": "0.5.7"
-  },
-  "_requested": {
-    "type": "git",
-    "raw": "https://github.com/colin27091/mozaik-ext-time.git",
-    "rawSpec": "https://github.com/colin27091/mozaik-ext-time.git",
-    "saveSpec": "git+https://github.com/colin27091/mozaik-ext-time.git",
-    "fetchSpec": "https://github.com/colin27091/mozaik-ext-time.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "git+https://github.com/colin27091/mozaik-ext-time.git#2ba23c0aab59fbe10d5bd2ac70512fd923398ce3",
-  "_spec": "https://github.com/colin27091/mozaik-ext-time.git",
-  "_where": "C:\\Users\\colin.regourd\\Documents\\learn\\React\\Mozaïk\\mozaik-test-kernel",
   "author": {
-    "name": "Raphaël Benitte",
+    "name": "Colin Regourd",
     "url": "https://github.com/colin27091"
   },
   "ava": {
@@ -63,9 +19,6 @@
       "babelify"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/plouc/mozaik-ext-time/issues"
-  },
   "bundleDependencies": false,
   "dependencies": {
     "babel-core": "6.7.2",
@@ -79,7 +32,7 @@
     "prop-types": "^15.7.2"
   },
   "deprecated": false,
-  "description": "Mozaik time widgets",
+  "description": "Mozaik pattern widgets",
   "devDependencies": {
     "ava": "0.13.0",
     "babel-eslint": "^5.0.0",
@@ -93,9 +46,9 @@
   },
   "engines": {
     "node": "14.15.x",
-    "npm": ">=.60.0"
+    "npm": ">=6.0.0"
   },
-  "homepage": "https://github.com/plouc/mozaik-ext-time",
+  "homepage": "https://github.com/colin27091/mozaik-ext-pattern",
   "keywords": [
     "time",
     "mozaik",
@@ -107,7 +60,7 @@
   ],
   "license": "MIT",
   "main": "./src/components/index.js",
-  "name": "mozaik-ext-time",
+  "name": "mozaik-ext-pattern",
   "nyc": {
     "extension": [
       ".jsx"
@@ -119,7 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/plouc/mozaik-ext-time.git"
+    "url": "git://github.com/plouc/mozaik-ext-pattern.git"
   },
   "scripts": {
     "cover-report": "nyc report --reporter=lcov && open coverage/lcov-report/index.html",
@@ -128,5 +81,5 @@
     "test": "ava",
     "test-cover": "nyc ava"
   },
-  "version": "1.1.0"
+  "version": "1.0.0"
 }
