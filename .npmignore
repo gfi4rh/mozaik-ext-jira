@@ -1,9 +1,0 @@
-test
-preview
-.travis.yml
-.eslintrc
-npm-debug.log*
-.nyc_output
-coverage
-.DS_Store
-ISSUE_TEMPLATE.md
