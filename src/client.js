@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
 import fetch from 'node-fetch';
+import { encode } from 'base-64';
 
 /**
  * @param {Mozaik} mozaik
@@ -7,23 +8,24 @@ import fetch from 'node-fetch';
  */
 const client = mozaik => {
 
-  return {
+  mozaik.loadApiConfig(config);
 
+  const apiCalls = {
 
-    board({ board }){
+    sprint(board) {
 
-      const def = Promise.defer();
-
-      mozaik.logger.info(chalk.yellow(`[jira] calling board: ${board}`));
-
-      fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board}`)
-        .then(res => res.json())
-        .then(json => def.resolve(json.name))
-        .catch(err => def.reject(err));
-
-        return def.promise;
+      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board}/sprint`, {
+        method: 'GET',
+        headers: {
+          'Authorization' : 'Basic ' + encode(`${process.env[JIRA_USERNAME]}:${process.env[JIRA_PASSORD]}`) ,
+          'Accept': 'application/json'
+        }
+      })
     }
-  }
+  } 
+
+  return apiCalls;
+
 }
 
 

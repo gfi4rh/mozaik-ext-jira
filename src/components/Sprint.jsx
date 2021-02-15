@@ -16,16 +16,15 @@ class Sprint extends Component {
     getApiRequest() {
 
         let { board } = this.props;
-        console.log(board);
 
         return {
-            id:     `jira.board.${board}`,
-            params : { board }
+            id:     `jira.sprint.${board}`,
+            params : {}
         };
     }
 
     onApiData(data) {
-        //console.log(data);
+        console.log(data);
         /*this.setState({
             repository: repository
         });*/
