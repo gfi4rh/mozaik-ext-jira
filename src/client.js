@@ -8,11 +8,12 @@ import { encode } from 'base-64';
  */
 const client = mozaik => {
 
-  mozaik.loadApiConfig(config);
 
   const apiCalls = {
 
     sprint(board) {
+
+      mozaik.logger.info("Appel Jira")
 
       return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board}/sprint`, {
         method: 'GET',

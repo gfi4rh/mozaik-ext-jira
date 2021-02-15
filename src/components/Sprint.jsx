@@ -9,7 +9,7 @@ class Sprint extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            repository: null
+            sprint: null
         };
     }
 
@@ -25,9 +25,9 @@ class Sprint extends Component {
 
     onApiData(data) {
         console.log(data);
-        /*this.setState({
-            repository: repository
-        });*/
+        this.setState({
+            sprint: data
+        });
     }
 
     render() {
@@ -76,7 +76,7 @@ class Sprint extends Component {
                         <span className="widget__header__subject">Sprint</span>
                     </span>
                     <span className="widget__header__count">
-                        {this.state.repository ? `#${this.state.repository.last_build_number}` : '8'}
+                        {`#${this.state.sprint.id}`}
                     </span>
                     <i className="fa fa-bug" />
                 </div>
