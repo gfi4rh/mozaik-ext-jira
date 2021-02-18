@@ -19,7 +19,9 @@ class Sprint extends Component {
 
         return {
             id:     `jira.sprint.${board}`,
-            params : {}
+            params : {
+                board : board 
+            }
         };
     }
 
@@ -32,37 +34,14 @@ class Sprint extends Component {
 
     render() {
 
-
         var cssClasses = '';
         var infoNode   = null;
 
-        if (this.state.repository) {
-
-            var statusClass = '';
-            if (this.state.repository.last_build_state === 'passed') {
-                statusClass = 'fa fa-check txt--success';
-            } else if (this.state.repository.last_build_state === 'started') {
-                statusClass = 'fa fa-play-circle-o';
-            }
+        if (this.state.sprint) {
 
             infoNode = (
                 <div>
-                    <div className="travis__repository__description">{this.state.repository.description}</div>
-                    <ul className="list list--compact">
-                        <li className="list__item">
-                            <i className={statusClass} /> last build&nbsp;
-                            <span className="prop__value">{this.state.repository.last_build_state}</span>
-                        </li>
-                        <li className="list__item">
-                            <i className="fa fa-clock-o" />&nbsp;
-                            last build <span className="prop__value">{moment(this.state.repository.last_build_started_at).fromNow()}</span>&nbsp;
-                            in <span className="count">{this.state.repository.last_build_duration}s</span>
-                        </li>
-                        <li className="list__item">
-                            <i className="fa fa-code" /> language:&nbsp;
-                            <span className="prop__value">{this.state.repository.github_language}</span>
-                        </li>
-                    </ul>
+                    Hello
                 </div>
             );
 
