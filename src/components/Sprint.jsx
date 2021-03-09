@@ -47,7 +47,7 @@ class Sprint extends Component {
                 </div>
                 <div className="widget__body">
                     <div>
-                        <Issues/>
+                        <Issues sprint={this.sprint.id}/>
                     </div>
                 </div>
             </div>
