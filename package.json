@@ -64,7 +64,7 @@
   ],
   "license": "MIT",
   "main": "./src/components/index.js",
-  "name": "mozaik-ext-api-pattern",
+  "name": "mozaik-ext-jira",
   "nyc": {
     "extension": [
       ".jsx"
@@ -85,5 +85,5 @@
     "test": "ava",
     "test-cover": "nyc ava"
   },
-  "version": "1.0.0"
+  "version": "2.0.0"
 }
