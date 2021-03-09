@@ -5,7 +5,7 @@ import { encode } from 'base-64';
 const client = mozaik => {
 
   const apiCalls = {
-    /*sprint( board ) {
+    sprint( board ) {
 
 
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.sprint`));
@@ -18,7 +18,7 @@ const client = mozaik => {
         }
       })
       .then(res => res.json())
-    },*/
+    }/*,
 
     issues( sprint ) {
       return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/sprint/${sprint.sprint}/issue`, {
@@ -29,7 +29,7 @@ const client = mozaik => {
         }
       })
       .then(res => res.json());
-    }
+    }*/
   };
 
   return apiCalls;

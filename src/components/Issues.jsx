@@ -12,7 +12,7 @@ class Issues extends Component {
         
     }
 
-    getApiRequest() {
+    /*getApiRequest() {
         let { sprint } = this.props;
 
         return {
@@ -21,7 +21,7 @@ class Issues extends Component {
                 sprint : sprint
             }
         };
-    }
+    }*/
 
     onApiData(issues) {
         console.log(issues);
