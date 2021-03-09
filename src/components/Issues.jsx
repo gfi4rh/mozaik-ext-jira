@@ -24,7 +24,7 @@ class Issues extends Component {
     }
 
     onApiData(issues) {
-        console.log(issues)
+        console.log(issues);
         this.setState({
             issues : issues
         });

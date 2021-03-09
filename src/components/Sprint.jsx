@@ -14,7 +14,7 @@ class Sprint extends Component {
         
     }
 
-    getApiRequest() {
+    /*getApiRequest() {
         let { board } = this.props;
 
         return {
@@ -23,11 +23,8 @@ class Sprint extends Component {
                 board: board
             }
         };
-    }
+    }*/
 
-    handlerEvent(event) {
-
-    }
 
     onApiData(sprint) {
         console.log(sprint)
