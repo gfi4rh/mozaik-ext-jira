@@ -45,13 +45,12 @@ class Sprint extends Component {
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {/* {this.state.sprint === null ? '' : this.state.sprint.name.split('-')[2]} */}
+                        {this.state.sprint === null ? '' : this.state.sprint.name.split('-')[2]}
                     </span>
                     <i className="fas fa-running" />
                 </div>
                 <div className="widget__body">
                     <div>
-                        <Issues sprint={5725}/>
                     </div>
                 </div>
             </div>

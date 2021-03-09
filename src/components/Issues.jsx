@@ -12,7 +12,7 @@ class Issues extends Component {
         
     }
 
-    getApiRequest() {
+    /*getApiRequest() {
         let { sprint } = this.props;
 
         return {
@@ -21,7 +21,7 @@ class Issues extends Component {
                 sprint : sprint
             }
         };
-    }
+    }*/
 
     onApiData(issues) {
         console.log(issues)
@@ -42,9 +42,9 @@ class Issues extends Component {
 
 Issues.displayName = 'Issues';
 
-Issues.propTypes = {
+/*Issues.propTypes = {
     board:  PropTypes.number.isRequired
-};
+};*/
 
 reactMixin(Issues.prototype, ListenerMixin);
 reactMixin(Issues.prototype, Mozaik.Mixin.ApiConsumer);
