@@ -4,8 +4,7 @@ import { encode } from 'base-64';
 
 const client = mozaik => {
 
-  return {
-
+  const apiCalls = {
     sprint( board ) {
 
       return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board.board}/sprint?state=future,active`, {
@@ -28,7 +27,9 @@ const client = mozaik => {
       })
       .then(res => res.json())
     }
-  }
+  };
+
+  return apiCalls;
 }
 
 export default client;
