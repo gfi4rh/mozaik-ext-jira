@@ -11,7 +11,7 @@ const client = mozaik => {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
-          'Content-Type': 'application/json'
+          'Accept': 'application/json'
         }
       })
       .then(res => res.json())
