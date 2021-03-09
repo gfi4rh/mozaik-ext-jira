@@ -21,7 +21,7 @@ class Sprint extends Component {
         let { board } = this.props;
 
         return {
-            id:     `api.sprint.${ board }`,
+            id:     `jira.sprint.${ board }`,
             params: {
                 board: board
             }
