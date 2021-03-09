@@ -1,29 +1,23 @@
-import Promise from 'bluebird';
 import fetch from 'node-fetch';
 import { encode } from 'base-64';
 
-/**
- * @param {Mozaik} mozaik
- * @returns {Function}
- */
 const client = mozaik => {
 
   return {
 
-    sprint({board}) {
+    sprint( board ) {
 
-      mozaik.logger.info(chalk.yellow(`[jira] calling board: ${board}`));
-
-      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board}/sprint`, {
+      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board.board}/sprint?state=future,active`, {
         method: 'GET',
         headers: {
-          'Authorization' : 'Basic ' + encode(`${process.env[JIRA_USERNAME]}:${process.env[JIRA_PASSWORD]}`) ,
-          'Accept': 'application/json'
+          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+          'Content-Type': 'application/json'
         }
       })
+      .then(res => res.json())
     }
+    
   }
 }
-
 
 export default client;

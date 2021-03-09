@@ -1,66 +1,56 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
+import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import moment                          from 'moment';
-import Mozaik                          from 'mozaik/browser';
+/*import classNames                      from 'classnames'
+import d3                              from 'd3/d3'
+import moment                          from 'moment'
+import timezone                        from 'moment-timezone'*/
 
 
 class Sprint extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sprint: null
-        };
+            sprint : null
+        }
+        
     }
 
     getApiRequest() {
-
         let { board } = this.props;
 
         return {
-            id:     `jira.sprint.${board}`,
-            params : {
-                board : board 
+            id:     `api.sprint.${ board }`,
+            params: {
+                board: board
             }
         };
     }
 
-    onApiData(data) {
-        console.log(data);
+    onApiData(sprint) {
+        console.log(sprint)
         this.setState({
-            sprint: data
+            sprint: sprint
         });
     }
 
     render() {
 
-        var cssClasses = '';
-        var infoNode   = null;
-
-        if (this.state.sprint) {
-
-            infoNode = (
-                <div>
-                    Hello
-                </div>
-            );
-
-            cssClasses = `travis__repository--${this.state.repository.last_build_state}`;
-        }
-
         return (
-            <div className={cssClasses}>
+            <div>
                 <div className="widget__header">
-                    <span className="travis__repository__slug">
-                        <span className="widget__header__subject">Sprint</span>
+                    <span>
+                        <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {`#${this.state.sprint.id}`}
+                        {this.state.sprint === null ? '' : this.state.sprint.values[0].name.split('-')[2]}
                     </span>
-                    <i className="fa fa-bug" />
+                    <i className="fa fa-running" />
                 </div>
                 <div className="widget__body">
-                    {infoNode}
+                    <div>
+                    </div>
                 </div>
             </div>
         );
@@ -69,13 +59,11 @@ class Sprint extends Component {
 
 Sprint.displayName = 'Sprint';
 
-/*Repository.propTypes = {
-    owner:      PropTypes.string.isRequired,
-    repository: PropTypes.string.isRequired
+Sprint.propTypes = {
+    board:  PropTypes.number.isRequired
 };
 
-reactMixin(Repository.prototype, ListenerMixin);
-reactMixin(Repository.prototype, Mozaik.Mixin.ApiConsumer);*/
-
+reactMixin(Sprint.prototype, ListenerMixin);
+reactMixin(Sprint.prototype, Mozaik.Mixin.ApiConsumer);
 
 export default Sprint;
