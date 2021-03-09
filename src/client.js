@@ -15,6 +15,17 @@ const client = mozaik => {
         }
       })
       .then(res => res.json())
+    },
+
+    issues( sprint ) {
+      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/sprint/${sprint.sprint}/issue`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+          'Accept': 'application/json'
+        }
+      })
+      .then(res => res.json())
     }
     
   }
