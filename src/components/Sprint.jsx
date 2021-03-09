@@ -25,6 +25,10 @@ class Sprint extends Component {
         };
     }
 
+    handlerEvent(event) {
+
+    }
+
     onApiData(sprint) {
         console.log(sprint)
         this.setState({
@@ -47,7 +51,7 @@ class Sprint extends Component {
                 </div>
                 <div className="widget__body">
                     <div>
-                        <Issues sprint={this.sprint.id}/>
+                        <Issues sprint={5725}/>
                     </div>
                 </div>
             </div>
