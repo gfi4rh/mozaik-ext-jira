@@ -18,7 +18,7 @@ class Issues extends Component {
         return {
             id:     `jira.issues.${ sprint }`,
             params: {
-                board: sprint
+                sprint : sprint
             }
         };
     }
