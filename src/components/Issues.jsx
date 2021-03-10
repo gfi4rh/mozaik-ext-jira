@@ -33,7 +33,7 @@ class Issues extends Component {
             .map(issue => { return {
                 id : issue.id,
                 key : issue.key,
-                status : {name : issues.fields.status.name, key : issues.fields.status.statusCategory.key} 
+                status : {name : issue.fields.status.name, key : issue.fields.status.statusCategory.key} 
             }});
 
         console.log(newIssues);
