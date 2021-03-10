@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import { encode } from 'base-64';
+import chalk from 'chalk';
 
 
 const client = mozaik => {

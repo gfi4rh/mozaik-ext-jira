@@ -48,7 +48,7 @@ class Sprint extends Component {
                 </div>
                 <div className="widget__body">
                     <div>
-                        <Issues sprint={5725}/>
+                        <Issues/>
                     </div>
                 </div>
             </div>
