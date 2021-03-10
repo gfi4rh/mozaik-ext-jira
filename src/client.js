@@ -1,33 +1,39 @@
-import Promise from 'bluebird';
 import fetch from 'node-fetch';
 import { encode } from 'base-64';
+import chalk from 'chalk';
 
-/**
- * @param {Mozaik} mozaik
- * @returns {Function}
- */
+
 const client = mozaik => {
 
-
   const apiCalls = {
+    sprint( board ) {
 
-    sprint(board) {
 
-      mozaik.logger.info("Appel Jira")
+      mozaik.logger.info(chalk.yellow(`[jira] calling jira.sprint`));
 
-      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board}/sprint`, {
+      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/board/${board.board}/sprint?state=future,active`, {
         method: 'GET',
         headers: {
-          'Authorization' : 'Basic ' + encode(`${process.env[JIRA_USERNAME]}:${process.env[JIRA_PASSORD]}`) ,
+          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
           'Accept': 'application/json'
         }
       })
-    }
-  } 
+      .then(res => res.json())
+    }/*,
+
+    issues( sprint ) {
+      return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/sprint/${sprint.sprint}/issue`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+          'Accept': 'application/json'
+        }
+      })
+      .then(res => res.json());
+    }*/
+  };
 
   return apiCalls;
-
 }
-
 
 export default client;

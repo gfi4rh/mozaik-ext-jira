@@ -1,87 +1,55 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
+import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import moment                          from 'moment';
-import Mozaik                          from 'mozaik/browser';
+import Issues from './Issues.jsx';
 
 
 class Sprint extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sprint: null
-        };
+            sprint : null
+        }
+        
     }
 
     getApiRequest() {
-
         let { board } = this.props;
 
         return {
-            id:     `jira.sprint.${board}`,
-            params : {}
+            id:     `jira.sprint.${ board }`,
+            params: {
+                board: board
+            }
         };
     }
 
-    onApiData(data) {
-        console.log(data);
+
+    onApiData(sprint) {
+        console.log(sprint)
         this.setState({
-            sprint: data
+            sprint: sprint.values[0]
         });
     }
 
     render() {
 
-
-        var cssClasses = '';
-        var infoNode   = null;
-
-        if (this.state.repository) {
-
-            var statusClass = '';
-            if (this.state.repository.last_build_state === 'passed') {
-                statusClass = 'fa fa-check txt--success';
-            } else if (this.state.repository.last_build_state === 'started') {
-                statusClass = 'fa fa-play-circle-o';
-            }
-
-            infoNode = (
-                <div>
-                    <div className="travis__repository__description">{this.state.repository.description}</div>
-                    <ul className="list list--compact">
-                        <li className="list__item">
-                            <i className={statusClass} /> last build&nbsp;
-                            <span className="prop__value">{this.state.repository.last_build_state}</span>
-                        </li>
-                        <li className="list__item">
-                            <i className="fa fa-clock-o" />&nbsp;
-                            last build <span className="prop__value">{moment(this.state.repository.last_build_started_at).fromNow()}</span>&nbsp;
-                            in <span className="count">{this.state.repository.last_build_duration}s</span>
-                        </li>
-                        <li className="list__item">
-                            <i className="fa fa-code" /> language:&nbsp;
-                            <span className="prop__value">{this.state.repository.github_language}</span>
-                        </li>
-                    </ul>
-                </div>
-            );
-
-            cssClasses = `travis__repository--${this.state.repository.last_build_state}`;
-        }
-
         return (
-            <div className={cssClasses}>
+            <div>
                 <div className="widget__header">
-                    <span className="travis__repository__slug">
-                        <span className="widget__header__subject">Sprint</span>
+                    <span>
+                        <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {`#${this.state.sprint.id}`}
+                        {this.state.sprint === null ? '' : this.state.sprint.name.split('-')[2]}
                     </span>
-                    <i className="fa fa-bug" />
+                    <i className="fas fa-running" />
                 </div>
                 <div className="widget__body">
-                    {infoNode}
+                    <div>
+                        <Issues/>
+                    </div>
                 </div>
             </div>
         );
@@ -90,13 +58,11 @@ class Sprint extends Component {
 
 Sprint.displayName = 'Sprint';
 
-/*Repository.propTypes = {
-    owner:      PropTypes.string.isRequired,
-    repository: PropTypes.string.isRequired
+Sprint.propTypes = {
+    board:  PropTypes.number.isRequired
 };
 
-reactMixin(Repository.prototype, ListenerMixin);
-reactMixin(Repository.prototype, Mozaik.Mixin.ApiConsumer);*/
-
+reactMixin(Sprint.prototype, ListenerMixin);
+reactMixin(Sprint.prototype, Mozaik.Mixin.ApiConsumer);
 
 export default Sprint;

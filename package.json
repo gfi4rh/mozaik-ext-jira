@@ -1,42 +1,4 @@
 {
-  "_from": "git+https://github.com/colin27091/mozaik-ext-jira.git",
-  "_id": "mozaik-ext-jira@1.0.0",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/mozaik-ext-jira",
-  "_phantomChildren": {
-    "babel-code-frame": "6.26.0",
-    "babel-generator": "6.26.1",
-    "babel-helpers": "6.24.1",
-    "babel-messages": "6.23.0",
-    "babel-register": "6.26.0",
-    "babel-template": "6.26.0",
-    "babel-traverse": "6.26.0",
-    "babel-types": "6.26.0",
-    "babylon": "6.18.0",
-    "brace-expansion": "1.1.11",
-    "convert-source-map": "1.7.0",
-    "debug": "2.6.9",
-    "path-is-absolute": "1.0.1",
-    "private": "0.1.8",
-    "slash": "1.0.0",
-    "source-map": "0.5.7"
-  },
-  "_requested": {
-    "type": "git",
-    "raw": "https://github.com/colin27091/mozaik-ext-jira.git",
-    "rawSpec": "https://github.com/colin27091/mozaik-ext-jira.git",
-    "saveSpec": "git+https://github.com/colin27091/mozaik-ext-jira.git",
-    "fetchSpec": "https://github.com/colin27091/mozaik-ext-jira.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "git+https://github.com/colin27091/mozaik-ext-jira.git#dcb061b1765c7eba886cfd86336ea954267cd3a8",
-  "_spec": "https://github.com/colin27091/mozaik-ext-jira.git",
-  "_where": "C:\\Users\\colin.regourd\\Documents\\learn\\React\\Mozaïk\\mozaik-test-kernel",
   "author": {
     "name": "Colin Regourd",
     "url": "https://github.com/colin27091"
@@ -57,9 +19,6 @@
       "babelify"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/plouc/mozaik-ext-pattern/issues"
-  },
   "bundleDependencies": false,
   "dependencies": {
     "babel-core": "6.7.2",
@@ -67,14 +26,16 @@
     "babel-preset-react": "6.5.0",
     "babelify": "^7.3.0",
     "base-64": "^1.0.0",
+    "chalk": "^4.1.0",
     "classnames": "2.2.3",
     "d3": "3.5.16",
     "moment": "2.12.0",
     "moment-timezone": "0.5.3",
     "node-fetch": "^2.6.1",
-    "prop-types": "^15.7.2"
+    "react-mixin": "3.0.4",
+    "reflux": "^0.4.1"
   },
-  "deprecated": false,
+  "deprecated": true,
   "description": "Mozaik pattern widgets",
   "devDependencies": {
     "ava": "0.13.0",
@@ -85,7 +46,7 @@
     "eslint": "2.2.0",
     "eslint-plugin-react": "4.2.2",
     "nyc": "6.1.1",
-    "react": "^17.0.1"
+    "react": "^0.13.3"
   },
   "engines": {
     "node": "14.15.x",
@@ -110,8 +71,8 @@
     ]
   },
   "peerDependencies": {
-    "mozaik": ">=1.1.0",
-    "react": "^17.0.1"
+    "mozaik": ">=2.0.0",
+    "react": "^0.13.3"
   },
   "repository": {
     "type": "git",
@@ -124,5 +85,5 @@
     "test": "ava",
     "test-cover": "nyc ava"
   },
-  "version": "1.0.0"
+  "version": "2.0.0"
 }
