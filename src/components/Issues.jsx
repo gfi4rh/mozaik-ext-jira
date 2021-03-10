@@ -29,11 +29,7 @@ class Issues extends Component {
         const { project } = this.props
 
         let newIssues = Object.assign({}, issues);
-        newIssues.map(x => {
-            if(x.key.split('-')[0] === project){
-                x;
-            }
-        })
+        newIssues.filter(x => x.key.split('-')[0] === project)
 
 
         this.setState({
