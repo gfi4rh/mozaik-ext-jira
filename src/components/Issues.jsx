@@ -36,7 +36,7 @@ class Issues extends Component {
 
         return (
             <div>
-                {issues.issues.length}
+                {issues === null ? '' : issues.issues.length}
             </div>
         );
     }
