@@ -24,14 +24,12 @@ class Issues extends Component {
     }
 
     onApiData(issues) {
-        console.log(issues);
+        console.log(issues.issues);
 
-        const { project } = this.props
+        const { project } = this.props;
 
-        let newIssues = Object.assign({}, issues);
-        newIssues.filter(x => x.key.split('-')[0] === project)
-
-
+        let newIssues = issues.issues.filter(x => x.key.split('-')[0] === project)
+        
         this.setState({
             issues : newIssues
         });
