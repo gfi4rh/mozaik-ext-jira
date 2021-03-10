@@ -28,8 +28,15 @@ class Issues extends Component {
 
         const { project } = this.props;
 
-        let newIssues = issues.issues.filter(x => x.key.split('-')[0] === project)
-        
+        let newIssues = issues.issues
+            .filter(x => x.key.split('-')[0] === project)
+            .map(issue => { return {
+                id : issue.id,
+                key : issue.key,
+                status : {name : issues.fields.status.name, key : issues.fields.status.statusCategory.key} 
+            }});
+
+        console.log(newIssues);
         this.setState({
             issues : newIssues
         });
