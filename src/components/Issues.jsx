@@ -25,8 +25,19 @@ class Issues extends Component {
 
     onApiData(issues) {
         console.log(issues);
+
+        const { project } = this.props
+
+        let newIssues = Object.assign({}, issues);
+        newIssues.map(x => {
+            if(x.key.split('-')[0] === project){
+                x;
+            }
+        })
+
+
         this.setState({
-            issues : issues
+            issues : newIssues
         });
     }
 
@@ -44,9 +55,9 @@ class Issues extends Component {
 
 Issues.displayName = 'Issues';
 
-/*Issues.propTypes = {
-    board:  PropTypes.number.isRequired
-};*/
+Issues.propTypes = {
+    sprint:  PropTypes.number.isRequired
+};
 
 reactMixin(Issues.prototype, ListenerMixin);
 reactMixin(Issues.prototype, Mozaik.Mixin.ApiConsumer);
