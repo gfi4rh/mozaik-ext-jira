@@ -32,9 +32,11 @@ class Issues extends Component {
 
     render() {
 
+        const { issues } = this.state;
+
         return (
             <div>
-                Hello
+                {issues.issues.length}
             </div>
         );
     }
