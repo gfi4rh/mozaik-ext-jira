@@ -4,5 +4,5 @@ import Issues from './Issues.jsx';
 
 export default {
     Sprint,
-    Issues
+    Issues,
 };

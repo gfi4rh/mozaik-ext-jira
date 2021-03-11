@@ -35,6 +35,9 @@ class Sprint extends Component {
 
     render() {
 
+        const { sprint } = this.state;
+        const { project } = this.props;
+
         return (
             <div>
                 <div className="widget__header">
@@ -48,7 +51,7 @@ class Sprint extends Component {
                 </div>
                 <div className="widget__body">
                     <div>
-                        <Issues/>
+                        {sprint != null && <Issues sprint={sprint.id} project={project}/>}
                     </div>
                 </div>
             </div>

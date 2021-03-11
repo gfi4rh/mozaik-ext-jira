@@ -19,9 +19,12 @@ const client = mozaik => {
         }
       })
       .then(res => res.json())
-    }/*,
+    },
 
     issues( sprint ) {
+
+      mozaik.logger.info(chalk.yellow(`[jira] calling jira.issues`));
+
       return fetch(`https://delivery.gfi.fr/jira/rest/agile/1.0/sprint/${sprint.sprint}/issue`, {
         method: 'GET',
         headers: {
@@ -30,7 +33,7 @@ const client = mozaik => {
         }
       })
       .then(res => res.json());
-    }*/
+    }
   };
 
   return apiCalls;
