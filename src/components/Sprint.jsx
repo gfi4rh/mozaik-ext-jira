@@ -3,6 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import Issues from './Issues.jsx';
+import moment from 'moment';
 import { betweenWithoutWeekend } from './util'
 
 
