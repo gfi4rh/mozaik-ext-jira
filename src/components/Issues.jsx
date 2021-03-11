@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-const  { ProgresBar }                         = Mozaik.Component;
+const  { ProgressBar }                         = Mozaik.Component;
 
 class Issues extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class Issues extends Component {
 
         return (
             <div>
-                <ProgresBar completed={50}/>
+                <ProgressBar completed={50}/>
             </div>
         );
     }
