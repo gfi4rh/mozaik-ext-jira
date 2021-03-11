@@ -8,7 +8,9 @@ class Issues extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            issues : null
+            issues : null,
+            open : null,
+            done : null
         }
         
     }
@@ -25,7 +27,6 @@ class Issues extends Component {
     }
 
     onApiData(issues) {
-        console.log(issues.issues);
 
         const { project } = this.props;
 
@@ -37,19 +38,25 @@ class Issues extends Component {
                 status : {name : issue.fields.status.name, key : issue.fields.status.statusCategory.key} 
             }});
 
+        let done = newIssues.filter(x => x.status.key === 'done').length
+
+        console.log("done : " + done)
+        console.log("open : " + (newIssues.length - done));
         console.log(newIssues);
         this.setState({
-            issues : newIssues
+            issues : newIssues, 
+            done : done,
+            open : newIssues.length-done
         });
     }
 
     render() {
 
-        const { issues } = this.state;
+        const { issues, open, done } = this.state;
 
         return (
             <div>
-                <ProgressBar completed={50}/>
+                <ProgressBar open={open} done={done}/>
             </div>
         );
     }
