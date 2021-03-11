@@ -3,6 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import Issues from './Issues.jsx';
+import { betweenWithoutWeekend } from './util'
 
 
 class Sprint extends Component {
@@ -11,7 +12,6 @@ class Sprint extends Component {
         this.state = {
             sprint : null
         }
-        
     }
 
     getApiRequest() {
@@ -25,18 +25,26 @@ class Sprint extends Component {
         };
     }
 
-
     onApiData(sprint) {
         console.log(sprint)
         this.setState({
-            sprint: sprint.values[0]
+            sprint: {
+                id : sprint.values[0].id,
+                name : sprint.values[0].name,
+                startDate : new Date(sprint.values[0].startDate),
+                endDate : new Date(sprint.values[0].endDate),
+                state : sprint.values[0].state
+            }
         });
     }
 
     render() {
 
+
         const { sprint } = this.state;
         const { project } = this.props;
+
+        console.log(sprint)
 
         return (
             <div>
@@ -45,13 +53,19 @@ class Sprint extends Component {
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {this.state.sprint === null ? '' : this.state.sprint.name.split('-')[2]}
+                        {sprint != null && sprint.name.split('-')[2]}
                     </span>
                     <i className="fas fa-running" />
                 </div>
                 <div className="widget__body">
                     <div>
+                        {sprint != null && sprint.startDate.toLocaleDateString()}
+                    </div>
+                    <div>
                         {sprint != null && <Issues sprint={sprint.id} project={project}/>}
+                    </div>
+                    <div>
+                        {sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate), 8)}
                     </div>
                 </div>
             </div>
