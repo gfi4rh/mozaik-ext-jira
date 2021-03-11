@@ -49,7 +49,7 @@ class Issues extends Component {
 
         return (
             <div>
-                <ProgresBar/>
+                <ProgresBar completed={50}/>
             </div>
         );
     }
