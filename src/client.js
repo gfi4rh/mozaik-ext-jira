@@ -33,8 +33,21 @@ const client = mozaik => {
         }
       })
       .then(res => res.json());
-    }
+    },
 
+    ticket( filter ) {
+
+      mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
+
+      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?jql=filter=${filter.filter}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+          'Accept': 'application/json'
+        }
+      })
+      .then(res => res.json())
+    }
   };
 
   return apiCalls;

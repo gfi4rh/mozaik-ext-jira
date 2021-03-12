@@ -23,7 +23,7 @@ class Ticket extends Component {
     }
 
     onApiData(tickets) {
-        console.log(tickets)
+        console.log("Ticket: " + tickets)
         /*this.setState({
             ticket: 
         });*/
