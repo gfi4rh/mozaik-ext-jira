@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
+import  sortIssues from './util';
 const  { ProgressBar }                         = Mozaik.Component;
 
 class Issues extends Component {
@@ -30,29 +31,18 @@ class Issues extends Component {
 
         const { project } = this.props;
 
-        let newIssues = issues.issues
-            .filter(x => x.key.split('-')[0] === project)
-            .map(issue => { return {
-                id : issue.id,
-                key : issue.key,
-                status : {name : issue.fields.status.name, key : issue.fields.status.statusCategory.key} 
-            }});
+        let { newIssues, done, open } = sortIssues(issues, project);
 
-        let done = newIssues.filter(x => x.status.key === 'done').length
-
-        console.log("done : " + done)
-        console.log("open : " + (newIssues.length - done));
-        console.log(newIssues);
         this.setState({
             issues : newIssues, 
             done : done,
-            open : newIssues.length-done
+            open : open
         });
     }
 
     render() {
 
-        const { issues, open, done } = this.state;
+        const { open, done } = this.state;
 
         return (
             <div>

@@ -15,5 +15,23 @@ import periodic from "contained-periodic-values";
     return `${days == 0 ? '':`${days} j`} ${hours == 0 ? '' :`${hours} h`} `;
   }
 
+  export function sortIssues(issues, project){
+
+    let doneList = ["VERIFIEE", "Réalisée", "En verification", "En validation", "Terminée", "Cloturée"]
+
+    let newIssues = issues.issues
+            .filter(x => x.key.split('-')[0] === project)
+            .map(issue => { return {
+                id : issue.id,
+                key : issue.key,
+                status : {name : issue.fields.status.name, key : issue.fields.status.statusCategory.key} 
+            }});
+
+        let done = newIssues.filter(x => doneList.includes(x.status.name)).length
+        let open = (newIssues.length - done);
+        console.log(newIssues);
+        return {newIssues, done, open};
+  }
+
 
 
