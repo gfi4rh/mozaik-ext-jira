@@ -34,6 +34,7 @@ const client = mozaik => {
       })
       .then(res => res.json());
     }
+
   };
 
   return apiCalls;
