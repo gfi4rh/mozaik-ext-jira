@@ -67,5 +67,29 @@ export function sortIssues(issues, project){
       return {newIssues, done, open};
 }
 
+export function sortType(tickets){
+  let data = {
+    task : 0,
+    bogue : 0,
+    evolution : 0
+  };
+
+  ticket.map(issue => {
+    switch(issue.issuetype.name){
+      case("Bogue  "):
+        data.bogue ++;
+        break;
+      case("Tâche"):
+        data.task ++;
+        break;
+      case("Evolution"):
+        data.evolution ++;
+    }
+  });
+
+  return data;
+
+}
+
 
 

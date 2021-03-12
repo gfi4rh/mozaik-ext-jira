@@ -2,12 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
+import sortType from './util';
 
 class Ticket extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tickets : null
+            task : null,
+            bogue : null,
+            evolution : null
         }
     }
 
@@ -23,17 +26,33 @@ class Ticket extends Component {
     }
 
     onApiData(tickets) {
-        console.log("Ticket: " + tickets)
-        /*this.setState({
-            ticket: 
-        });*/
+
+      let data = sortType(tickets);
+
+      this.setState({
+          task : data.task,
+          bogue : data.bogue,
+          evolution : data.evolution
+      });
     }
 
     render() {
 
-        const { tickets } = this.state;
+        const { task, bogue, evolution } = this.state;
 
-        let bodyNode = <div className="widget__body"/>
+        let bodyNode = (
+          <div className="widget__body">
+            <div>
+              {`Tâche : ${task}`}
+            </div>
+            <div>
+              {`Bogue : ${bogue}`}
+            </div>
+            <div>
+              {`Evolution : ${evolution}`}
+            </div>
+          </div>
+        );
 
         return (
             <div>
