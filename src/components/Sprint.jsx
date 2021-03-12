@@ -3,7 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import moment from 'moment';
-import { betweenBusinessDays } from './util'
+import { betweenBusinessDays, hoursLeft } from './util'
 
 import Issues from './Issues.jsx';
 const  { ProgressBar }                         = Mozaik.Component;
@@ -53,9 +53,9 @@ class Sprint extends Component {
         if(sprint && sprint.state == 'active'){
 
             let toStringStart = sprint.startDate.toLocaleDateString();
-            let { nodOrigin, hoursOrigin } =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))
-            let { numOfDays, hours } = betweenBusinessDays(moment(), moment(sprint.endDate))
-            let completed = (numOfDays*8+hours)*100/(nodOrigin*8+hoursOrigin)
+            let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))
+            let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate))
+            let hours = hoursLeft();
 
             bodyNode = (
                 <div className="widget__body">
@@ -69,7 +69,7 @@ class Sprint extends Component {
                         {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                     </div>
                     <div>
-                        <ProgressBar completed={completed} color={'#161824'} height={'0.3em'}/>
+                        <ProgressBar completed={numOfDays*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
                     </div>
 
                 </div>

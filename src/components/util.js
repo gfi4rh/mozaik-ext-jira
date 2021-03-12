@@ -31,7 +31,7 @@ function notWorkingDay(date){
 
 }
 
-function hoursLeft(){
+export function hoursLeft(){
   let hour = moment().hour()+1;
   if(hour <=9) return 8
   if(hour <=12) return 5+12-hour
@@ -43,12 +43,10 @@ function hoursLeft(){
 export function betweenBusinessDays(start, end){
   const total = end.diff(start, "days")
   let numOfDays = total
-  let weekend = [0 /*dimanche*/ ,6 /*samedi*/]
   for(let i = 0; i <= total; i++){
       if(notWorkingDay(moment(start).add(i, "days"))) numOfDays --
   }
-  const hours = hoursLeft();
-  return {numOfDays: numOfDays, hours: hours};
+  return numOfDays;
 }
 
 export function sortIssues(issues, project){
