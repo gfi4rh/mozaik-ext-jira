@@ -3,7 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import { sortType } from './util';
-const  { Pie }                         = Mozaik.Component;
+const  { Camembert }                         = Mozaik.Component;
 
 class Ticket extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class Ticket extends Component {
 
         let bodyNode = (
             <div className="widget__body">
-                {data != null && <Pie data={data}/>}
+                <Camembert/>
             </div>
         );
 
@@ -48,7 +48,7 @@ class Ticket extends Component {
                     </span>
                     <i className="fas fa-running" />
                 </div>
-                  {bodyNode}
+                    {bodyNode}
             </div>
         );
     }
