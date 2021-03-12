@@ -90,15 +90,18 @@ export function sortType(tickets){
   let formatData = [{
     id : "Bogue",
     count : data.bogue,
-    color : '#e1b12c'
+    color : '#e1b12c',
+    label : "Bogue"
   },{
     id : "Tâche",
     count : data.task,
-    color : '#e84118'
+    color : '#e84118',
+    label : "Tâche"
   },{
     id : 'Evolution',
     count : data.evolution,
-    color : '#40739e'
+    color : '#40739e',
+    label : "Evolution"
   }]
 
   return formatData;
