@@ -66,7 +66,7 @@ class Sprint extends Component {
                         {sprint != null && <Issues sprint={sprint.id} project={project}/>}
                     </div>
                     <div>
-                        {sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate), 8)}
+                        {sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate))}
                     </div>
                 </div>
             </div>
