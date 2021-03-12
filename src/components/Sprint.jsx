@@ -2,9 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import Issues from './Issues.jsx';
 import moment from 'moment';
 import { betweenBusinessDays } from './util'
+
+import Issues from './Issues.jsx';
+const  { ProgressBar }                         = Mozaik.Component;
+
 
 
 class Sprint extends Component {
@@ -63,6 +66,10 @@ class Sprint extends Component {
                     <div>
                         {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                     </div>
+                    <div>
+                        <ProgressBar completed={10} color={'#2d3436'}/>
+                    </div>
+
                 </div>
             );
         }
