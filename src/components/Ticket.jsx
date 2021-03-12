@@ -25,10 +25,9 @@ class Ticket extends Component {
     }
 
     onApiData(tickets) {
-      
-      this.setState({
-          data :  sortType(tickets)
-      });
+        this.setState({
+            data : sortType(tickets) 
+        });
     }
 
     render() {
@@ -36,9 +35,9 @@ class Ticket extends Component {
         const { data } = this.state;
 
         let bodyNode = (
-          <div className="widget__body">
-            <Pie data={data}/>
-          </div>
+            <div className="widget__body">
+                {data != null && <Pie data={data}/>}
+            </div>
         );
 
         return (
