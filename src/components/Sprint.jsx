@@ -59,17 +59,19 @@ class Sprint extends Component {
 
             bodyNode = (
                 <div className="widget__body">
-                    <div>
+                    <div className="jira__sprint__startdate jira__sprint__line">
                         {toStringStart}
                     </div>
-                    <div>
+                    <div className="jira__sprint__line">
                         <Issues sprint={sprint.id} project={project}/>
                     </div>
-                    <div>
-                        {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
-                    </div>
-                    <div>
-                        <ProgressBar completed={numOfDays*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
+                    <div className="jira__sprint__line">
+                        <div className="jira__sprint__timeleft">
+                            {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
+                        </div>
+                        <div>
+                            <ProgressBar completed={numOfDays*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
+                        </div>
                     </div>
 
                 </div>
