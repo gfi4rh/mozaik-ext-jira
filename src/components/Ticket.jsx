@@ -3,14 +3,13 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import { sortType } from './util';
+const  { Pie }                         = Mozaik.Component;
 
 class Ticket extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            task : null,
-            bogue : null,
-            evolution : null
+            data : null
         }
     }
 
@@ -26,31 +25,19 @@ class Ticket extends Component {
     }
 
     onApiData(tickets) {
-
-      let data = sortType(tickets);
-
+      
       this.setState({
-          task : data.task,
-          bogue : data.bogue,
-          evolution : data.evolution
+          data :  sortType(tickets)
       });
     }
 
     render() {
 
-        const { task, bogue, evolution } = this.state;
+        const { data } = this.state;
 
         let bodyNode = (
           <div className="widget__body">
-            <div>
-              {`Tâche : ${task}`}
-            </div>
-            <div>
-              {`Bogue : ${bogue}`}
-            </div>
-            <div>
-              {`Evolution : ${evolution}`}
-            </div>
+            <Pie data={data}/>
           </div>
         );
 

@@ -87,7 +87,21 @@ export function sortType(tickets){
     }
   });
 
-  return data;
+  let formatData = [{
+    id : "Bogue",
+    count : data.bogue,
+    color : '#e1b12c'
+  },{
+    id : "Tâche",
+    count : data.task,
+    color : '#e84118'
+  },{
+    id : 'Evolution',
+    count : data.evolution,
+    color : '#40739e'
+  }]
+
+  return formatData;
 
 }
 
