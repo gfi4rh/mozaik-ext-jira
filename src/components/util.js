@@ -1,6 +1,8 @@
 import moment from "moment";
 
-function notWorkingDay(year){
+function notWorkingDay(date){
+
+  let year = date.year();
 
   var JourAn = moment([year, "00", "01"])
 	var FeteTravail = moment([year, "04", "01"])
