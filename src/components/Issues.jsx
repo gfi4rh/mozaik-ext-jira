@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import  sortIssues from './util';
+import  { sortIssues } from './util';
 const  { ProgressBar }                         = Mozaik.Component;
 
 class Issues extends Component {
