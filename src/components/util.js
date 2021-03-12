@@ -74,7 +74,7 @@ export function sortType(tickets){
     evolution : 0
   };
 
-  tickets.map(issue => {
+  tickets.issues.map(issue => {
     switch(issue.issuetype.name){
       case("Bogue  "):
         data.bogue ++;
