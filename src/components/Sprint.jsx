@@ -62,8 +62,10 @@ class Sprint extends Component {
                     <div className="jira__sprint__startdate jira__sprint__line jira__sprint__text">
                         {toStringStart}
                     </div>
-                    <div className="jira__sprint__line" style={{paddingLeft:'2vmin'}}>
-                        Issues
+                    <div className="jira__sprint__line">
+                        <div style={{paddingLeft:'2vmin'}}>
+                            Issues
+                        </div>
                         <div>
                             <Issues sprint={sprint.id} project={project}/>
                         </div>
