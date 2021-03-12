@@ -1,4 +1,4 @@
-import periodic from "contained-periodic-values";
+import moment from "moment";
 
 function notWorkingDay(year){
 
