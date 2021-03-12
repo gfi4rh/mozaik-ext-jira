@@ -45,9 +45,27 @@ class Sprint extends Component {
         const { sprint } = this.state;
         const { project } = this.props;
 
-        let toStringStart = sprint.startDate.toLocaleDateString();
-        //let originTimeLeft
-        let { numOfDays, hours } = betweenWithoutWeekend(moment(), moment(sprint.endDate))
+        let bodyNode = <div className="widget__body"/>
+
+        if(sprint && sprint.state == 'active'){
+
+            let toStringStart = sprint.startDate.toLocaleDateString();
+            let { numOfDays, hours } = sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate))
+
+            bodyNode = (
+                <div className="widget__body">
+                    <div>
+                        {toStringStart}
+                    </div>
+                    <div>
+                        <Issues sprint={sprint.id} project={project}/>
+                    </div>
+                    <div>
+                        {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <div>
@@ -60,17 +78,7 @@ class Sprint extends Component {
                     </span>
                     <i className="fas fa-running" />
                 </div>
-                <div className="widget__body">
-                    <div>
-                        {sprint != null && sprint.status == 'active' && toLocaleDateString}
-                    </div>
-                    <div>
-                        {sprint != null && <Issues sprint={sprint.id} project={project}/>}
-                    </div>
-                    <div>
-                        {sprint != null && `${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
-                    </div>
-                </div>
+                {bodyNode}
             </div>
         );
     }
