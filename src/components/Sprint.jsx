@@ -67,7 +67,7 @@ class Sprint extends Component {
                         {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                     </div>
                     <div>
-                        <ProgressBar completed={10} color={'#353b48'} height={'0.2em'}/>
+                        <ProgressBar completed={10} color={'#2f3640'} height={'0.3em'}/>
                     </div>
 
                 </div>
