@@ -59,14 +59,17 @@ class Sprint extends Component {
 
             bodyNode = (
                 <div className="widget__body">
-                    <div className="jira__sprint__startdate jira__sprint__line">
+                    <div className="jira__sprint__startdate jira__sprint__line jira__sprint__text">
                         {toStringStart}
                     </div>
-                    <div className="jira__sprint__line">
-                        <Issues sprint={sprint.id} project={project}/>
+                    <div className="jira__sprint__line" style={{paddingLeft:'2vmin'}}>
+                        Issues
+                        <div>
+                            <Issues sprint={sprint.id} project={project}/>
+                        </div>
                     </div>
                     <div className="jira__sprint__line">
-                        <div className="jira__sprint__timeleft">
+                        <div className="jira__sprint__text">
                             {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                         </div>
                         <div>
