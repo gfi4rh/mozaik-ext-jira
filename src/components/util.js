@@ -46,7 +46,7 @@ export function betweenBusinessDays(start, end){
       if(notWorkingDay(moment(start).add(i, "days"))) numOfDays --
   }
   const hours = hoursLeft();
-  return `${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `;
+  return {numOfDays: numOfDays, hours: hours};
 }
 
 export function sortIssues(issues, project){

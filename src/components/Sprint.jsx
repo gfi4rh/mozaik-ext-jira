@@ -4,7 +4,7 @@ import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import Issues from './Issues.jsx';
 import moment from 'moment';
-import { betweenWithoutWeekend } from './util'
+import { betweenBusinessDays } from './util'
 
 
 class Sprint extends Component {
@@ -45,7 +45,9 @@ class Sprint extends Component {
         const { sprint } = this.state;
         const { project } = this.props;
 
-        console.log(sprint)
+        let toStringStart = sprint.startDate.toLocaleDateString();
+        //let originTimeLeft
+        let { numOfDays, hours } = betweenWithoutWeekend(moment(), moment(sprint.endDate))
 
         return (
             <div>
@@ -60,13 +62,13 @@ class Sprint extends Component {
                 </div>
                 <div className="widget__body">
                     <div>
-                        {sprint != null && sprint.startDate.toLocaleDateString()}
+                        {sprint != null && sprint.status == 'active' && toLocaleDateString}
                     </div>
                     <div>
                         {sprint != null && <Issues sprint={sprint.id} project={project}/>}
                     </div>
                     <div>
-                        {sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate))}
+                        {sprint != null && `${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                     </div>
                 </div>
             </div>
