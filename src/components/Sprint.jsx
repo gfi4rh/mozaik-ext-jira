@@ -53,7 +53,9 @@ class Sprint extends Component {
         if(sprint && sprint.state == 'active'){
 
             let toStringStart = sprint.startDate.toLocaleDateString();
-            let { numOfDays, hours } = sprint != null && betweenBusinessDays(moment(), moment(sprint.endDate))
+            let { nodOrigin, hoursOrigin } =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))
+            let { numOfDays, hours } = betweenBusinessDays(moment(), moment(sprint.endDate))
+            let completed = (nodOrigin*8+hoursOrigin)*100/(numOfDays*8+hours)
 
             bodyNode = (
                 <div className="widget__body">
@@ -67,7 +69,7 @@ class Sprint extends Component {
                         {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                     </div>
                     <div>
-                        <ProgressBar completed={10} color={'#2f3640'} height={'0.3em'}/>
+                        <ProgressBar completed={completed} color={'#161824'} height={'0.3em'}/>
                     </div>
 
                 </div>
