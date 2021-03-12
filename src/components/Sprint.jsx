@@ -55,7 +55,7 @@ class Sprint extends Component {
             let toStringStart = sprint.startDate.toLocaleDateString();
             let { nodOrigin, hoursOrigin } =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))
             let { numOfDays, hours } = betweenBusinessDays(moment(), moment(sprint.endDate))
-            let completed = (nodOrigin*8+hoursOrigin)*100/(numOfDays*8+hours)
+            let completed = (numOfDays*8+hours)*100/(nodOrigin*8+hoursOrigin)
 
             bodyNode = (
                 <div className="widget__body">
