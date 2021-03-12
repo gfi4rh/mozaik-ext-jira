@@ -53,7 +53,7 @@ class Sprint extends Component {
         if(sprint && sprint.state == 'active'){
 
             let toStringStart = sprint.startDate.toLocaleDateString();
-            let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))
+            let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
             let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate))
             let hours = hoursLeft();
 
