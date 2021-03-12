@@ -50,7 +50,7 @@ class Sprint extends Component {
         if(sprint && sprint.state == 'active'){
 
             let toStringStart = sprint.startDate.toLocaleDateString();
-            let { numOfDays, hours } = sprint != null && betweenWithoutWeekend(moment(), moment(sprint.endDate))
+            let { numOfDays, hours } = sprint != null && betweenBusinessDays(moment(), moment(sprint.endDate))
 
             bodyNode = (
                 <div className="widget__body">
