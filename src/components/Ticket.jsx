@@ -61,7 +61,7 @@ class Ticket extends Component {
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {data != null && data.datasets[0].data.length}
+                        {data != null && data.datasets[0].data.reduce((a,b) => a + b)}
                     </span>
                 </div>
                     {bodyNode}
