@@ -64,7 +64,7 @@ class Sprint extends Component {
                     </div>
                     <div className="jira__sprint__line">
                         <div style={{paddingLeft:'2vmin'}}>
-                            Issues
+                            Ticket :
                         </div>
                         <div>
                             <Issues sprint={sprint.id} project={project}/>
@@ -75,7 +75,7 @@ class Sprint extends Component {
                             {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                         </div>
                         <div>
-                            <ProgressBar completed={numOfDays*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
+                            <ProgressBar completed={(nodOrigin-numOfDays)*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
                         </div>
                     </div>
 

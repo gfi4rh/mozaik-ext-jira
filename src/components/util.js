@@ -94,6 +94,7 @@ export function sortType(tickets){
       'Evolution'
     ],
     datasets: [{
+      label : 'Tickets ouverts',
       data: [
         data.bogue,
         data.task,
@@ -108,7 +109,8 @@ export function sortType(tickets){
       '#d35400',
       '#2980b9',
       '#27ae60'
-      ]
+      ],
+      borderWidth : 0.5
     }]
   };
 

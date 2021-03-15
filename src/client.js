@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { encode } from 'base-64';
 import chalk from 'chalk';
+import moment from 'moment';
 
 
 const client = mozaik => {
@@ -38,8 +39,9 @@ const client = mozaik => {
     ticket( filter ) {
 
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
+      let now = moment().year();
 
-      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?jql=filter=${filter.filter}`, {
+      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?jql="Arrêté de versions" in (${now-1}, ${now}) ANDfilter=${filter.filter}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
