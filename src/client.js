@@ -41,7 +41,7 @@ const client = mozaik => {
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
       let now = moment().year();
 
-      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?jql="Arrêté de versions" in (${now-1}, ${now}) ANDfilter=${filter.filter}`, {
+      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
