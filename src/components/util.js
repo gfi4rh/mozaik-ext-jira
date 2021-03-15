@@ -71,7 +71,8 @@ export function sortType(tickets){
   let data = {
     task : 0,
     bogue : 0,
-    evolution : 0
+    evolution : 0,
+    incident : 0
   };
 
   tickets.issues.map(issue => {
@@ -84,31 +85,38 @@ export function sortType(tickets){
         break;
       case("Evolution"):
         data.evolution ++;
+        break;
+      case("Incident"):
+        data.incident ++;
     }
   });
 
   const formatData = {
     labels: [
-      'Bogue',
       'Tâche',
-      'Evolution'
+      'Evolution',
+      'Bogue',
+      'Incident'
     ],
     datasets: [{
       label : 'Tickets ouverts',
       data: [
-        data.bogue,
         data.task,
-        data.evolution
+        data.evolution,
+        data.bogue,
+        data.incident
       ],
       backgroundColor: [
-      '#d35400',
       '#2980b9',
-      '#27ae60'
+      '#27ae60',
+      '#d35400',
+      '#e1b12c'
       ],
       hoverBackgroundColor: [
-      '#d35400',
       '#2980b9',
-      '#27ae60'
+      '#27ae60',
+      '#d35400',
+      '#e1b12c'
       ],
       borderWidth : 0.5
     }]
