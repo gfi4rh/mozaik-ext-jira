@@ -87,22 +87,30 @@ export function sortType(tickets){
     }
   });
 
-  let formatData = [{
-    id : "Bogue",
-    count : data.bogue,
-    color : '#e1b12c',
-    label : "Bogue"
-  },{
-    id : "Tâche",
-    count : data.task,
-    color : '#e84118',
-    label : "Tâche"
-  },{
-    id : 'Evolution',
-    count : data.evolution,
-    color : '#40739e',
-    label : "Evolution"
-  }]
+  const formatData = {
+    labels: [
+      'Bogue',
+      'Tâche',
+      'Evolution'
+    ],
+    datasets: [{
+      data: [
+        data.bogue,
+        data.task,
+        data.evolution
+      ],
+      backgroundColor: [
+      '#FF6384',
+      '#36A2EB',
+      '#FFCE56'
+      ],
+      hoverBackgroundColor: [
+      '#FF6384',
+      '#36A2EB',
+      '#FFCE56'
+      ]
+    }]
+  };
 
   return formatData;
 
