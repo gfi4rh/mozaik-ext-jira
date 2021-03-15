@@ -36,7 +36,7 @@ class Ticket extends Component {
 
         let bodyNode = (
             <div className="widget__body">
-                <Camembert data={data_test}/>
+                <Camembert data={data}/>
             </div>
         );
 
