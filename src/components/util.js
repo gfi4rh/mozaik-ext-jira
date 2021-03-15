@@ -67,8 +67,8 @@ export function sortIssues(issues, project){
       return {newIssues, done, open};
 }
 
-export function sortType(tickets){
-  let data = {
+export function sortType(data){
+  /*let data = {
     task : 0,
     bogue : 0,
     evolution : 0,
@@ -89,7 +89,7 @@ export function sortType(tickets){
       case("Incident"):
         data.incident ++;
     }
-  });
+  });*/
 
   const formatData = {
     labels: [

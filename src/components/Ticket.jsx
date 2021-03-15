@@ -26,10 +26,8 @@ class Ticket extends Component {
 
     onApiData(tickets) {
 
-        console.log("Ticky : " + tickets);
-
         this.setState({
-            data : null //sortType(tickets) 
+            data : formatData(tickets) 
         });
     }
 
