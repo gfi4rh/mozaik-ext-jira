@@ -41,14 +41,31 @@ const client = mozaik => {
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
       let now = moment().year();
 
-      return fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`, {
+      let url = `https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`
+
+      let header = {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
           'Accept': 'application/json'
         }
-      })
-      .then(res => res.json())
+      };
+
+      let requests = [
+        fetch(`${url} AND type = "Bogue  "`, header),
+        fetch(`${url} AND type = "Task"`, header),
+        fetch(`${url} AND type = "Evolution"`, header),
+        fetch(`${url} AND type = "Incident"`, header)
+      ]
+
+      return Promise.all(requests)
+        .then(([bogue, task, evolution, incident]) => {return {
+          bogue : bogue.total,
+          task : task.total,
+          evolution : evolution.total,
+          incident : incident.total
+        }.json();
+        });
     }
   };
 
