@@ -90,9 +90,8 @@ class Sprint extends Component {
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
                     <span className="widget__header__count">
-                        {sprint != null && sprint.name.split('-')[2]}
+                        {sprint != null && `#${sprint.name.split('-')[2]}`}
                     </span>
-                    <i className="fas fa-running" />
                 </div>
                 {bodyNode}
             </div>

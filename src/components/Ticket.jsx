@@ -41,6 +41,7 @@ class Ticket extends Component {
             display: true,
             position: 'bottom',
             labels : {
+
                 boxWidth : 10
             }
         }
@@ -59,7 +60,9 @@ class Ticket extends Component {
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
-                    <i className="fas fa-running" />
+                    <span className="widget__header__count">
+                        {data != null && data.datasets[0].data.length}
+                    </span>
                 </div>
                     {bodyNode}
             </div>
