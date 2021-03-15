@@ -34,12 +34,13 @@ class Ticket extends Component {
 
         const { data } = this.state;
 
+
         let bodyNode = <div className="widget__body"></div>;
 
         if(data) {
             bodyNode = (
                 <div className="widget__body">
-                    <Camembert data={data} height={'0.5em'} width={'0.5em'}/>
+                    <Camembert data={data} options={{}} legend={{labels : {boxWidth : 20}}} height={'0.5em'} width={'0.5em'}/>
                 </div>
             );
         }

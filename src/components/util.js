@@ -109,16 +109,7 @@ export function sortType(tickets){
       '#36A2EB',
       '#FFCE56'
       ]
-    }],
-    options : {
-      legend : {
-        display : true,
-        labels : {
-          boxWidth : "0.5em",
-          
-        }
-      }
-    }
+    }]
   };
 
   return formatData;
