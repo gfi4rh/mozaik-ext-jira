@@ -100,14 +100,14 @@ export function sortType(tickets){
         data.evolution
       ],
       backgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
+      '#d35400',
+      '#2980b9',
+      '#27ae60'
       ],
       hoverBackgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
+      '#d35400',
+      '#2980b9',
+      '#27ae60'
       ]
     }]
   };
