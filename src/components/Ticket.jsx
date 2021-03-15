@@ -37,10 +37,18 @@ class Ticket extends Component {
 
         let bodyNode = <div className="widget__body"></div>;
 
+        let legend = {
+            display: true,
+            position: 'bottom',
+            labels : {
+                boxWidth : 10
+            }
+        }
+
         if(data) {
             bodyNode = (
                 <div className="widget__body">
-                    <Camembert data={data} options={{}} legend={{labels : {boxWidth : 20}}} height={'0.5em'} width={'0.5em'}/>
+                    <Camembert data={data} options={{}} legend={legend} height={'0.5em'} width={'0.5em'}/>
                 </div>
             );
         }
