@@ -41,7 +41,7 @@ const client = mozaik => {
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
       let now = moment().year();
 
-      let url = `https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`
+      /*let url = `https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`
 
       let header = {
         method: 'GET',
@@ -65,7 +65,14 @@ const client = mozaik => {
           evolution : evolution.total,
           incident : incident.total
         }.json();
-        });
+        });*/
+
+        return(fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+            'Accept': 'application/json'
+        }})).then(res => res.json());
     }
   };
 

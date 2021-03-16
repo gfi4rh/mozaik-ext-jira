@@ -67,7 +67,7 @@ export function sortIssues(issues, project){
       return {newIssues, done, open};
 }
 
-export function sortType(data){
+export function formatData(data){
   /*let data = {
     task : 0,
     bogue : 0,
@@ -91,7 +91,7 @@ export function sortType(data){
     }
   });*/
 
-  const formatData = {
+  const formattedData = {
     labels: [
       'Tâche',
       'Evolution',
@@ -122,7 +122,7 @@ export function sortType(data){
     }]
   };
 
-  return formatData;
+  return formattedData;
 
 }
 

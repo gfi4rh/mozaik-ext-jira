@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import { sortType } from './util';
+import { formatData } from './util';
 const  { Camembert }                         = Mozaik.Component;
 
 class Ticket extends Component {
@@ -26,8 +26,10 @@ class Ticket extends Component {
 
     onApiData(tickets) {
 
+        console.log(JSON.stringify(tickets));
+
         this.setState({
-            data : formatData(tickets) 
+            data : null//formatData(tickets) 
         });
     }
 
@@ -50,7 +52,7 @@ class Ticket extends Component {
         if(data) {
             bodyNode = (
                 <div className="widget__body" style={{padding : '0.5em'}}>
-                    <Camembert data={data} options={{}} legend={legend} height={'0.5em'} width={'0.5em'} />
+                    <Camembert data={data} legend={legend} height={'0.5em'} width={'0.5em'} />
                 </div>
             );
         }
