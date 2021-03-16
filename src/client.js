@@ -41,7 +41,7 @@ const client = mozaik => {
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.ticket`));
       let now = moment().year();
 
-      /*let url = `https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`
+      let url = `https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=0&jql=%22Arr%C3%AAt%C3%A9%20de%20versions%22%20in%20(${now -1},${now})%20AND%20filter=${filter.filter}`
 
       let header = {
         method: 'GET',
@@ -50,29 +50,15 @@ const client = mozaik => {
           'Accept': 'application/json'
         }
       };
-
+      
       let requests = [
-        fetch(`${url} AND type = "Bogue  "`, header),
-        fetch(`${url} AND type = "Task"`, header),
-        fetch(`${url} AND type = "Evolution"`, header),
-        fetch(`${url} AND type = "Incident"`, header)
-      ]
+        "%20and%20type=%22Bogue%20%20%22",  //Bogue
+        "%20and%20type=%22Task%22",        //Tâche
+        "%20and%20type=%22Evolution%22",  //Evolution
+        "%20and%20type=%22Incident%22"   //Incident
+      ].map(type => fetch(url+type, header).then(res => res.json()))
 
-      return Promise.all(requests)
-        .then(([bogue, task, evolution, incident]) => {return {
-          bogue : bogue.total,
-          task : task.total,
-          evolution : evolution.total,
-          incident : incident.total
-        }.json();
-        });*/
-
-        return(fetch(`https://delivery.gfi.fr/jira/rest/api/2/search?maxResults=200&jql="Arrêté de versions" in (${now-1}, ${now}) AND filter=${filter.filter}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
-            'Accept': 'application/json'
-        }})).then(res => res.json());
+      return Promise.all(requests);
     }
   };
 

@@ -26,10 +26,8 @@ class Ticket extends Component {
 
     onApiData(tickets) {
 
-        console.log(JSON.stringify(tickets));
-
         this.setState({
-            data : null//formatData(tickets) 
+            data : formatData(tickets) 
         });
     }
 

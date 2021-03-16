@@ -68,28 +68,6 @@ export function sortIssues(issues, project){
 }
 
 export function formatData(data){
-  /*let data = {
-    task : 0,
-    bogue : 0,
-    evolution : 0,
-    incident : 0
-  };
-
-  tickets.issues.map(issue => {
-    switch(issue.fields.issuetype.name){
-      case("Bogue  "):
-        data.bogue ++;
-        break;
-      case("Tâche"):
-        data.task ++;
-        break;
-      case("Evolution"):
-        data.evolution ++;
-        break;
-      case("Incident"):
-        data.incident ++;
-    }
-  });*/
 
   const formattedData = {
     labels: [
@@ -101,10 +79,10 @@ export function formatData(data){
     datasets: [{
       label : 'Tickets ouverts',
       data: [
-        data.task,
-        data.evolution,
-        data.bogue,
-        data.incident
+        data[1].total, //Tache
+        data[2].total, //Evolution
+        data[0].total, //Bogue
+        data[3].total  //Incident
       ],
       backgroundColor: [
       '#2980b9',
