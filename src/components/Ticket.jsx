@@ -3,7 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import { formatData } from './util';
-const  { Chart }                         = Mozaik.Component;
+const  { Graphic }                         = Mozaik.Component;
 
 class Ticket extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class Ticket extends Component {
         if(data) {
             bodyNode = (
                 <div className="widget__body" style={{padding : '0.5em'}}>
-                    <Chart data={data} height={'0.5em'} width={'0.5em'} />
+                    <Graphic data={data} height={'0.5em'} width={'0.5em'} />
                 </div>
             );
         }
