@@ -3,7 +3,7 @@ import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
 import { formatData } from './util';
-const  { Camembert }                         = Mozaik.Component;
+const  { Chart }                         = Mozaik.Component;
 
 class Ticket extends Component {
     constructor(props) {
@@ -38,19 +38,19 @@ class Ticket extends Component {
 
         let bodyNode = <div className="widget__body"></div>;
 
-        let legend = {
+        /*let legend = {
             display: true,
             position: 'bottom',
             labels : {
 
                 boxWidth : 10
             }
-        }
+        }*/
 
         if(data) {
             bodyNode = (
                 <div className="widget__body" style={{padding : '0.5em'}}>
-                    <Camembert data={data} legend={legend} height={'0.5em'} width={'0.5em'} />
+                    <Chart data={data} height={'0.5em'} width={'0.5em'} />
                 </div>
             );
         }
