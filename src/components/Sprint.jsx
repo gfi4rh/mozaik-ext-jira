@@ -81,6 +81,12 @@ class Sprint extends Component {
 
                 </div>
             );
+        } else {
+            bodyNode = (
+                <div className="widget__body">
+                    En cours d'initialisation ..
+                </div>
+            );
         }
 
         return (
