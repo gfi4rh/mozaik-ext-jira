@@ -14,12 +14,13 @@ class Ticket extends Component {
     }
 
     getApiRequest() {
-        let { filter } = this.props;
+        let { filter, url } = this.props;
 
         return {
             id:     `jira.ticket.${ filter }`,
             params: {
-                filter: filter
+                filter: filter,
+                url : url
             }
         };
     }

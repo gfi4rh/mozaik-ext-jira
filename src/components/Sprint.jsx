@@ -19,12 +19,13 @@ class Sprint extends Component {
     }
 
     getApiRequest() {
-        let { board } = this.props;
+        let { board, url } = this.props;
 
         return {
             id:     `jira.sprint.${ board }`,
             params: {
-                board: board
+                board: board,
+                url : url
             }
         };
     }
