@@ -7,6 +7,7 @@ import moment from 'moment';
 const client = mozaik => {
 
   const apiCalls = {
+    
     sprint( params ) {
 
 
@@ -26,14 +27,22 @@ const client = mozaik => {
 
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.issues`));
 
-      return fetch(`${params.url}/rest/agile/1.0/sprint/${params.sprint}/issue`, {
+      let headers = {
+        'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
+        'Accept': 'application/json'
+      }
+
+      return fetch(`${params.url}/rest/agile/1.0/sprint/${params.sprint}/issue?maxResults=0`,{
         method: 'GET',
-        headers: {
-          'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),
-          'Accept': 'application/json'
-        }
+        headers: headers
       })
+      .then(res => res.json())
+      .then(json => fetch(`${params.url}/rest/agile/1.0/sprint/${params.sprint}/issue?maxResults=${json.total}&fields=status`, {
+        method: 'GET',
+        headers: headers
+      }))
       .then(res => res.json());
+
     },
 
     ticket( params ) {

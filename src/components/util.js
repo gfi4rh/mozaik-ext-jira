@@ -63,7 +63,6 @@ export function sortIssues(issues, project){
 
       let done = newIssues.filter(x => doneList.includes(x.status.name)).length
       let open = (newIssues.length - done);
-      console.log(newIssues);
       return {newIssues, done, open};
 }
 
