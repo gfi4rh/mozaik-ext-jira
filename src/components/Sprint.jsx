@@ -84,7 +84,7 @@ class Sprint extends Component {
         } else {
             bodyNode = (
                 <div className="widget__body">
-                    En cours d'initialisation ..
+                    <div className="jira__sprint__nodata">Sprint en cours de création ...</div>
                 </div>
             );
         }
