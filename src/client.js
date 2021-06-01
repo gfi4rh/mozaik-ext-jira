@@ -65,7 +65,7 @@ const client = mozaik => {
         "%20and%20type=%22Task%22",        //Tâche
         "%20and%20type=%22Evolution%22",  //Evolution
         "%20and%20type=%22Incident%22"   //Incident
-      ].map(type => fetch(url+type, header).then(res => res.json()))
+      ].map(type => fetch(url+type, header).then(res => res.json().total))
 
       return Promise.all(requests);
     }

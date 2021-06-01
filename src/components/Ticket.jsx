@@ -25,10 +25,12 @@ class Ticket extends Component {
         };
     }
 
-    onApiData(tickets) {
+    onApiData(data) {
+
+        console.log(data)
 
         this.setState({
-            data : formatData(tickets) 
+            data : data
         });
     }
 
@@ -36,22 +38,33 @@ class Ticket extends Component {
 
         const { data } = this.state;
 
+        const labels = [
+            'Tâche',
+            'Evolution',
+            'Bogue',
+            'Incident'
+        ]
+
+        const backgroundColor = [
+            '#2980b9',
+            '#27ae60',
+            '#d35400',
+            '#e1b12c'
+        ]
 
         let bodyNode = <div className="widget__body"></div>;
 
-        /*let legend = {
-            display: true,
-            position: 'bottom',
-            labels : {
-
-                boxWidth : 10
-            }
-        }*/
 
         if(data) {
             bodyNode = (
-                <div className="widget__body" style={{padding : '0.5em'}}>
-                    <Graphic data={data} height={'0.5em'} width={'0.5em'} />
+                <div className="widget__body">
+                    <Graphic 
+                        colors={backgroundColor} 
+                        labels={labels}
+                        data={data} 
+                        height={'0.5em'} 
+                        width={'0.5em'} 
+                    />
                 </div>
             );
         }
