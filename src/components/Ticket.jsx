@@ -27,10 +27,10 @@ class Ticket extends Component {
 
     onApiData(data) {
 
-        console.log(data)
+        let format = data.map(e => e.total)
 
         this.setState({
-            data : data
+            data : format
         });
     }
 
