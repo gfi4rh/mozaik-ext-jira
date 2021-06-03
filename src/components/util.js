@@ -66,42 +66,5 @@ export function sortIssues(issues, project){
       return {newIssues, done, open};
 }
 
-export function formatData(data){
-
-  const formattedData = {
-    labels: [
-      'Tâche',
-      'Evolution',
-      'Bogue',
-      'Incident'
-    ],
-    datasets: [{
-      label : 'Tickets ouverts',
-      data: [
-        data[1].total, //Tache
-        data[2].total, //Evolution
-        data[0].total, //Bogue
-        data[3].total  //Incident
-      ],
-      backgroundColor: [
-      '#2980b9',
-      '#27ae60',
-      '#d35400',
-      '#e1b12c'
-      ],
-      hoverBackgroundColor: [
-      '#2980b9',
-      '#27ae60',
-      '#d35400',
-      '#e1b12c'
-      ],
-      borderWidth : 0.5
-    }]
-  };
-
-  return formattedData;
-
-}
-
 
 

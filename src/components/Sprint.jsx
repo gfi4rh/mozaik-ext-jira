@@ -46,7 +46,7 @@ class Sprint extends Component {
 
 
         const { sprint } = this.state;
-        const { project } = this.props;
+        const { board, project } = this.props;
 
         let bodyNode = <div className="widget__body"/>
 
@@ -58,7 +58,7 @@ class Sprint extends Component {
             let hours = hoursLeft();
 
             bodyNode = (
-                <div className="widget__body">
+                <div className="widget__body" onClik={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
                     <div className="jira__sprint__startdate jira__sprint__line jira__sprint__text">
                         {toStringStart}
                     </div>
