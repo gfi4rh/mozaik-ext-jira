@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
-import { formatData } from './util';
 const  { Graphic }                         = Mozaik.Component;
 
 class Ticket extends Component {
@@ -37,6 +36,7 @@ class Ticket extends Component {
     render() {
 
         const { data } = this.state;
+        const { filter } = this.props
 
         const labels = [
             'Tâche',
@@ -52,12 +52,12 @@ class Ticket extends Component {
             '#e1b12c'
         ]
 
-        let bodyNode = <div className="widget__body"></div>;
+        let bodyNode = <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}></div>;
 
 
         if(data) {
             bodyNode = (
-                <div className="widget__body">
+                <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}>
                     <Graphic 
                         colors={backgroundColor} 
                         labels={labels}
