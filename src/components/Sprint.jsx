@@ -58,7 +58,7 @@ class Sprint extends Component {
             let hours = hoursLeft();
 
             bodyNode = (
-                <div className="widget__body" onClik={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
+                <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
                     <div className="jira__sprint__startdate jira__sprint__line jira__sprint__text">
                         {toStringStart}
                     </div>
@@ -83,7 +83,7 @@ class Sprint extends Component {
             );
         } else {
             bodyNode = (
-                <div className="widget__body" onClik={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
+                <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
                     <div className="jira__sprint__nodata">Sprint en cours de création ...</div>
                 </div>
             );
