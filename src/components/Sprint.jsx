@@ -84,7 +84,7 @@ class Sprint extends Component {
         } else {
             bodyNode = (
                 <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
-                    <div className="jira__sprint__nodata">Sprint en cours de création ...</div>
+                    <div className="jira__sprint__nodata">Pas de sprint actif ...</div>
                 </div>
             );
         }
