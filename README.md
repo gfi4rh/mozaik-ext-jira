@@ -42,8 +42,8 @@ key        | required | description
 
 ```javascript
 {
-  type: 'jira.sprint',
-  title : "Sprint",
+  type: 'jira.ticket',
+  title : "Tickets ouverts",
   url : "https://host.com/jira",
   filter : 39451
   columns: 1, rows: 1,
