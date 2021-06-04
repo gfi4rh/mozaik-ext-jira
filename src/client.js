@@ -13,7 +13,7 @@ const client = mozaik => {
 
       mozaik.logger.info(chalk.yellow(`[jira] calling jira.sprint`));
 
-      return fetch(`${params.url}/rest/agile/1.0/board/${params.board}/sprint?state=future,active`, {
+      return fetch(`${params.url}/rest/agile/1.0/board/${params.board}/sprint?state=active`, {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + encode(`${process.env.JIRA_USERNAME}:${process.env.JIRA_PASSWORD}`),

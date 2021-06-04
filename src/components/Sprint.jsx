@@ -38,15 +38,21 @@ class Sprint extends Component {
                 error : sprint.errors.rapidViewId
             })
         } else {
-            this.setState({
-                sprint: {
-                    id : sprint.values[0].id,
-                    name : sprint.values[0].name,
-                    startDate : new Date(sprint.values[0].startDate),
-                    endDate : new Date(sprint.values[0].endDate),
-                    state : sprint.values[0].state
-                }
-            })
+            if(sprint.values){
+                this.setState({
+                    sprint: {
+                        id : sprint.values[0].id,
+                        name : sprint.values[0].name,
+                        startDate : new Date(sprint.values[0].startDate),
+                        endDate : new Date(sprint.values[0].endDate),
+                        state : sprint.values[0].state
+                    }
+                })
+            } else {
+                this.setState({
+                    error : "Pas de sprint actif ..."
+                })
+            }
         }
 
     }
