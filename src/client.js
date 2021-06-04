@@ -21,6 +21,10 @@ const client = mozaik => {
         }
       })
       .then(res => res.json())
+      .catch(err => {
+        console.log(err)
+        return {error : err}
+      })
     },
 
     issues( params ) {
