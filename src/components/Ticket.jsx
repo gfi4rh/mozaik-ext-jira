@@ -52,12 +52,12 @@ class Ticket extends Component {
             '#e1b12c'
         ]
 
-        let bodyNode = <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}></div>;
+        let bodyNode = <div className="widget__body ticket_cursor" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}></div>;
 
 
         if(data) {
             bodyNode = (
-                <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}>
+                <div className="widget__body ticket_cursor" onClick={e => window.open("https://delivery.gfi.fr/jira/issues/?filter="+filter)}>
                     <Graphic 
                         colors={backgroundColor} 
                         labels={labels}

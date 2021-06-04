@@ -14,7 +14,8 @@ class Sprint extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sprint : null
+            sprint : null,
+            error : null
         }
     }
 
@@ -31,21 +32,29 @@ class Sprint extends Component {
     }
 
     onApiData(sprint) {
-        this.setState({
-            sprint: {
-                id : sprint.values[0].id,
-                name : sprint.values[0].name,
-                startDate : new Date(sprint.values[0].startDate),
-                endDate : new Date(sprint.values[0].endDate),
-                state : sprint.values[0].state
-            }
-        });
+        
+        if('errors' in sprint) {
+            this.setState({
+                error : sprint.errors.rapidViewId
+            })
+        } else {
+            this.setState({
+                sprint: {
+                    id : sprint.values[0].id,
+                    name : sprint.values[0].name,
+                    startDate : new Date(sprint.values[0].startDate),
+                    endDate : new Date(sprint.values[0].endDate),
+                    state : sprint.values[0].state
+                }
+            })
+        }
+
     }
 
     render() {
 
 
-        const { sprint } = this.state;
+        const { sprint, error } = this.state;
         const { board, project } = this.props;
 
         let bodyNode = <div className="widget__body"/>
@@ -81,10 +90,10 @@ class Sprint extends Component {
 
                 </div>
             );
-        } else {
+        } else { 
             bodyNode = (
                 <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
-                    <div className="jira__sprint__nodata">Pas de sprint actif ...</div>
+                    <div className="jira__sprint__nodata">{error}</div>
                 </div>
             );
         }
@@ -95,9 +104,9 @@ class Sprint extends Component {
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
-                    <span className="widget__header__count">
+                    { !error && <span className="widget__header__count">
                         {sprint != null && `#${sprint.name.split('-')[2]}`}
-                    </span>
+                    </span>}
                 </div>
                 {bodyNode}
             </div>
