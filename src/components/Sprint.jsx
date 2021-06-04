@@ -19,11 +19,11 @@ class Sprint extends Component {
         }
     }
 
-    getApiRequest() {
+    getApiRequest() { //fonction d'appel d'api MOZAIK
         let { board, url } = this.props;
 
         return {
-            id:     `jira.sprint.${ board }`,
+            id:     `jira.sprint.${ board }`, //board est un paramètre JIRA
             params: {
                 board: board,
                 url : url
@@ -31,14 +31,14 @@ class Sprint extends Component {
         };
     }
 
-    onApiData(sprint) {
+    onApiData(sprint) { //retour d'api MOZAIK
         
-        if('errors' in sprint) {
+        if('errors' in sprint) { //si erreur dans retour, remplir le champ error de STATE
             this.setState({
                 error : sprint.errors.rapidViewId
             })
         } else {
-            if(sprint.values.length){
+            if(sprint.values.length){ // s'il y a au moins une valeur dans le champ values du retour, remplir le champs sprint de STATE
                 this.setState({
                     sprint: {
                         id : sprint.values[0].id,
@@ -48,7 +48,7 @@ class Sprint extends Component {
                         state : sprint.values[0].state
                     }
                 })
-            } else {
+            } else { //si pas d'erreur ni de valeur alors pas de sprint actif, repmir le champ erreur de STATE
                 this.setState({
                     error : "Pas de sprint actif ..."
                 })
@@ -63,9 +63,9 @@ class Sprint extends Component {
         const { sprint, error } = this.state;
         const { board, project } = this.props;
 
-        let bodyNode = <div className="widget__body"/>
+        let bodyNode = <div className="widget__body"/> //node par défaut
 
-        if(sprint && sprint.state == 'active'){
+        if(sprint){
 
             let toStringStart = sprint.startDate.toLocaleDateString();
             let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
