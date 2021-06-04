@@ -38,7 +38,7 @@ class Sprint extends Component {
                 error : sprint.errors.rapidViewId
             })
         } else {
-            if(sprint.values){
+            if(sprint.values.length){
                 this.setState({
                     sprint: {
                         id : sprint.values[0].id,
