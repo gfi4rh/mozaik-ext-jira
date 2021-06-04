@@ -90,7 +90,7 @@ class Ticket extends Component {
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
-                    {!erorr && <span className="widget__header__count">
+                    {!error && <span className="widget__header__count">
                         {data != null && data.reduce((a,b) => a + b)}
                     </span>}
                 </div>
