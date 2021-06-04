@@ -2,17 +2,21 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
+import  { sortIssues } from './util';
+const  { ProgressBar }                         = Mozaik.Component;
 
 class Issues extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            issues : null
+            issues : null,
+            open : null,
+            done : null
         }
         
     }
 
-    /*getApiRequest() {
+    getApiRequest() {//pour chaque issue un appel est fait pour recuperer plus d'information
         let { sprint } = this.props;
 
         return {
@@ -21,20 +25,30 @@ class Issues extends Component {
                 sprint : sprint
             }
         };
-    }*/
+    }
 
+    //les infos reçues permettent de classer les issues en done ou open 
+    //avec la fonction sortIssues
     onApiData(issues) {
-        console.log(issues);
+
+        const { project } = this.props;
+
+        let { newIssues, done, open } = sortIssues(issues, project);
+
         this.setState({
-            issues : issues
+            issues : newIssues, 
+            done : done,
+            open : open
         });
     }
 
     render() {
 
+        const { open, done } = this.state;
+
         return (
             <div>
-                Hello
+                <ProgressBar open={open} done={done}/>
             </div>
         );
     }
@@ -42,9 +56,9 @@ class Issues extends Component {
 
 Issues.displayName = 'Issues';
 
-/*Issues.propTypes = {
-    board:  PropTypes.number.isRequired
-};*/
+Issues.propTypes = {
+    sprint:  PropTypes.number.isRequired
+};
 
 reactMixin(Issues.prototype, ListenerMixin);
 reactMixin(Issues.prototype, Mozaik.Mixin.ApiConsumer);
