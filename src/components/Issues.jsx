@@ -16,7 +16,7 @@ class Issues extends Component {
         
     }
 
-    getApiRequest() {
+    getApiRequest() {//pour chaque issue un appel est fait pour recuperer plus d'information
         let { sprint } = this.props;
 
         return {
@@ -27,6 +27,8 @@ class Issues extends Component {
         };
     }
 
+    //les infos reçues permettent de classer les issues en done ou open 
+    //avec la fonction sortIssues
     onApiData(issues) {
 
         const { project } = this.props;

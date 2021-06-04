@@ -13,6 +13,7 @@ class Ticket extends Component {
         }
     }
 
+    //appel API avec un filtre jira préenregristrer 
     getApiRequest() {
         let { filter, url } = this.props;
 
@@ -25,14 +26,19 @@ class Ticket extends Component {
         };
     }
 
+    //recuperation du nombre de tickets et de leurs types
     onApiData(data) {
 
+        //si le premier type de ticket contient un erreur, remplir erreur
+        //si le premier contient une erreur il s'agit d'une erreur de filtre
+        //par conséquent les autres ont aussi l'erreur
         if('errorMessages' in data[0]){
             this.setState({
                 error : data[0].errorMessages[0]
             })
         } else {
 
+            //si pas d'erreur on rempli STATE avec le total de ticket pour chaque type
             let format = data.map(e => e.total)
 
             this.setState({
@@ -61,12 +67,13 @@ class Ticket extends Component {
             '#e1b12c'
         ]
 
-        let bodyNode = <div className="widget__body ticket_cursor" onClick={e => window.open(url+"/issues/?filter="+filter)}></div>;
+        let bodyNode
 
 
         if(data) {
             bodyNode = (
                 <div className="widget__body ticket_cursor" onClick={e => window.open(url+"/issues/?filter="+filter)}>
+                    {/* utilisation d'un graphe de MOZAIK (librairie chartjs)*/}
                     <Graphic 
                         colors={backgroundColor} 
                         labels={labels}
@@ -79,6 +86,7 @@ class Ticket extends Component {
         } else {
             bodyNode = (
                 <div className="widget__body ticket_nodata ticket_cursor" onClick={e => window.open(url+"/issues/?filter="+filter)}>
+                    {/* affichage d'erreur */}
                     {error}
                 </div>
             );
@@ -90,6 +98,7 @@ class Ticket extends Component {
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
+                    {/* somme de tickets */}
                     {!error && <span className="widget__header__count">
                         {data != null && data.reduce((a,b) => a + b)}
                     </span>}

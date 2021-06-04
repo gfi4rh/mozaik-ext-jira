@@ -63,10 +63,12 @@ class Sprint extends Component {
         const { sprint, error } = this.state;
         const { board, project } = this.props;
 
-        let bodyNode = <div className="widget__body"/> //node par défaut
+        let bodyNode //node par défaut
 
         if(sprint){
 
+            //calcul du nombre de jour travaillé entre maintenant et la fin du sprint 
+            //calcul du nombre d'heures, en comptant 8 heures par jour
             let toStringStart = sprint.startDate.toLocaleDateString();
             let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
             let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate))
@@ -82,14 +84,17 @@ class Sprint extends Component {
                             Ticket :
                         </div>
                         <div>
+                            {/*pogress bar pour le nombre d'issues faites et non faites*/}
                             <Issues sprint={sprint.id} project={project}/>
                         </div>
                     </div>
                     <div className="jira__sprint__line">
                         <div className="jira__sprint__text">
+                            {/*jours et heures restantes */}
                             {`${numOfDays == 0 ? '':`${numOfDays} j`} ${hours == 0 ? '' :`${hours} h`} `}
                         </div>
                         <div>
+                            {/*porgress bar pour le temps passé*/}
                             <ProgressBar completed={(nodOrigin-numOfDays)*100/nodOrigin} color={'#161824'} height={'0.3em'}/>
                         </div>
                     </div>
@@ -99,6 +104,7 @@ class Sprint extends Component {
         } else { 
             bodyNode = (
                 <div className="widget__body" onClick={e => window.open("https://delivery.gfi.fr/jira/secure/RapidBoard.jspa?rapidView="+board)}>
+                    {/* node d'erreur */}
                     <div className="jira__sprint__nodata">{error}</div>
                 </div>
             );
@@ -110,6 +116,7 @@ class Sprint extends Component {
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
+                    {/* si pas d'erreur somme du nombre total d'issues */}
                     { !error && <span className="widget__header__count">
                         {sprint != null && `#${sprint.name.split('-')[2]}`}
                     </span>}
