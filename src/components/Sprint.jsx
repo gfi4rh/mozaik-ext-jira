@@ -73,8 +73,8 @@ class Sprint extends Component {
             let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
             let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate)) 
             numOfDays = numOfDays === 0 ? '' : `${numOfDays} j`
-            let hours = hoursLeft() 
-            hours = hours === 0 ? '' :`${hours} h`
+            let hoursShow = hoursLeft() 
+            hoursShow = hours === 0 ? '' :`${hours} h`
 
 
             bodyNode = (
@@ -94,7 +94,7 @@ class Sprint extends Component {
                     <div className="jira__sprint__line">
                         <div className="jira__sprint__text">
                             {/*jours et heures restantes */}
-                            {`${numOfDays} ${hours}`}
+                            {`${numOfDaysShow} ${hoursShow}`}
                         </div>
                         <div>
                             {/*porgress bar pour le temps passé*/}
