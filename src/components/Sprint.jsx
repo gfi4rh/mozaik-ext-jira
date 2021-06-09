@@ -61,7 +61,7 @@ class Sprint extends Component {
 
 
         const { sprint, error } = this.state;
-        const { board, project } = this.props;
+        const { board, project, url } = this.props;
 
         let bodyNode //node par défaut
 
@@ -85,7 +85,7 @@ class Sprint extends Component {
                         </div>
                         <div>
                             {/*pogress bar pour le nombre d'issues faites et non faites*/}
-                            <Issues sprint={sprint.id} project={project}/>
+                            <Issues  url={url} sprint={sprint.id} project={project}/>
                         </div>
                     </div>
                     <div className="jira__sprint__line">

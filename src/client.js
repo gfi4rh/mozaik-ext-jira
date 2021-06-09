@@ -41,7 +41,7 @@ const client = mozaik => {
         method: 'GET',
         headers: headers
       }))
-      .then(res => res.json());
+      .then(res => res.json())
 
     },
 

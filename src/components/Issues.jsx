@@ -17,12 +17,13 @@ class Issues extends Component {
     }
 
     getApiRequest() {//pour chaque issue un appel est fait pour recuperer plus d'information
-        let { sprint } = this.props;
+        let { sprint, url } = this.props;
 
         return {
             id:     `jira.issues.${ sprint }`,
             params: {
-                sprint : sprint
+                sprint : sprint,
+                url : url
             }
         };
     }
