@@ -72,9 +72,9 @@ class Sprint extends Component {
             let toStringStart = sprint.startDate.toLocaleDateString();
             let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
             let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate)) 
-            numOfDays = numOfDays === 0 ? '' : `${numOfDays} j`
-            let hoursShow = hoursLeft() 
-            hoursShow = hours === 0 ? '' :`${hours} h`
+            let numOfDaysShow = numOfDays === 0 ? '' : `${numOfDays} j`
+            let hours = hoursLeft() 
+            let hoursShow = hours === 0 ? '' :`${hours} h`
 
 
             bodyNode = (
