@@ -71,8 +71,10 @@ class Sprint extends Component {
             //calcul du nombre d'heures, en comptant 8 heures par jour
             let toStringStart = sprint.startDate.toLocaleDateString();
             let nodOrigin  =  betweenBusinessDays(moment(sprint.startDate), moment(sprint.endDate))+1
-            let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate)) === 0 ? '' : `${numOfDays} j`
-            let hours = hoursLeft()  === 0 ? '' :`${hours} h`
+            let numOfDays = betweenBusinessDays(moment(), moment(sprint.endDate)) 
+            numOfDays = numOfDays === 0 ? '' : `${numOfDays} j`
+            let hours = hoursLeft() 
+            hours = hours === 0 ? '' :`${hours} h`
 
 
             bodyNode = (
